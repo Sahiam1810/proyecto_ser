@@ -301,3 +301,57 @@ function mostrarBitacora() {
 
 // Cargar bitácora al inicio
 document.addEventListener('DOMContentLoaded', mostrarBitacora);
+
+// Funcionalidad para Objetivo SMART
+const smartForm = document.getElementById('smart-form');
+const objetivoSmartPersonalizado = document.getElementById('objetivo-smart-personalizado');
+
+if (smartForm) {
+  smartForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const especifico = document.getElementById('smart-especifico').value.trim();
+    const medible = document.getElementById('smart-medible').value.trim();
+    const alcanzable = document.getElementById('smart-alcanzable').value.trim();
+    const relevante = document.getElementById('smart-relevante').value.trim();
+    const tiempo = document.getElementById('smart-tiempo').value.trim();
+
+    if (especifico && medible && alcanzable && relevante && tiempo) {
+      const objetivo = {
+        especifico,
+        medible,
+        alcanzable,
+        relevante,
+        tiempo,
+        fechaCreacion: new Date().toISOString()
+      };
+
+      localStorage.setItem('objetivo-smart', JSON.stringify(objetivo));
+      mostrarObjetivoSMART(objetivo);
+      smartForm.reset();
+    }
+  });
+}
+
+function mostrarObjetivoSMART(objetivo) {
+  if (objetivoSmartPersonalizado) {
+    objetivoSmartPersonalizado.innerHTML = `
+      <h4 class="text-lg font-semibold mb-2">Tu Objetivo SMART Personalizado</h4>
+      <div class="bg-green-50 p-4 rounded-lg">
+        <p><strong>Específico:</strong> ${objetivo.especifico}</p>
+        <p><strong>Medible:</strong> ${objetivo.medible}</p>
+        <p><strong>Alcanzable:</strong> ${objetivo.alcanzable}</p>
+        <p><strong>Relevante:</strong> ${objetivo.relevante}</p>
+        <p><strong>Tiempo:</strong> ${objetivo.tiempo}</p>
+        <p class="text-sm text-gray-600 mt-2">Creado el: ${new Date(objetivo.fechaCreacion).toLocaleDateString()}</p>
+      </div>
+    `;
+  }
+}
+
+// Cargar objetivo SMART al inicio
+document.addEventListener('DOMContentLoaded', () => {
+  const objetivoGuardado = localStorage.getItem('objetivo-smart');
+  if (objetivoGuardado) {
+    mostrarObjetivoSMART(JSON.parse(objetivoGuardado));
+  }
+});

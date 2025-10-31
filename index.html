@@ -64,13 +64,37 @@
       <div id="resultados-autoevaluacion"></div>
     </section>
 
-    <section id="smart_section" class="bg-white mb-8 p-6 rounded-lg shadow-md">
+    <section id="smart" class="bg-white mb-8 p-6 rounded-lg shadow-md">
       <h2 class="text-green-600 border-b-2 border-green-600 pb-2 mb-4">Objetivo SMART</h2>
-      <p>Específico: Ahorrar todas las monedas de $500 y $1000 que reciba. <br>
-        Medible: Se medirá la cantidad de monedas recolectadas semanalmente. <br>
-        Alcanzable: Es posible hacerlo destinando solo monedas pequeñas que se reciban en el día a día. <br>
-        Relevante: Este ahorro servirá como un autorregalo en diciembre, fomentando la disciplina y el hábito del ahorro.<br>
-        Tiempo: Desde ahora hasta diciembre del presente año.</p>
+
+      <h3 class="text-lg font-semibold mt-4 mb-2">Crea tu Objetivo SMART Personalizado</h3>
+      <form id="smart-form" class="mb-6">
+        <label for="smart-especifico" class="block mb-2 font-bold">Específico (¿Qué quieres lograr exactamente?)</label>
+        <input type="text" id="smart-especifico" placeholder="Ej: Ahorrar $50,000 para un viaje" required class="w-full p-2 mb-4 border border-gray-300 rounded">
+
+        <label for="smart-medible" class="block mb-2 font-bold">Medible (¿Cómo medirás el progreso?)</label>
+        <input type="text" id="smart-medible" placeholder="Ej: Ahorrar $10,000 mensuales" required class="w-full p-2 mb-4 border border-gray-300 rounded">
+
+        <label for="smart-alcanzable" class="block mb-2 font-bold">Alcanzable (¿Es realista con tus recursos?)</label>
+        <input type="text" id="smart-alcanzable" placeholder="Ej: Sí, con mi ingreso actual y reduciendo gastos innecesarios" required class="w-full p-2 mb-4 border border-gray-300 rounded">
+
+        <label for="smart-relevante" class="block mb-2 font-bold">Relevante (¿Por qué es importante para ti?)</label>
+        <input type="text" id="smart-relevante" placeholder="Ej: Me permitirá viajar y desconectar del estrés diario" required class="w-full p-2 mb-4 border border-gray-300 rounded">
+
+        <label for="smart-tiempo" class="block mb-2 font-bold">Tiempo (¿Cuándo lo lograrás?)</label>
+        <input type="text" id="smart-tiempo" placeholder="Ej: En 5 meses, para junio del próximo año" required class="w-full p-2 mb-4 border border-gray-300 rounded">
+
+        <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Crear Objetivo SMART</button>
+      </form>
+
+      <div id="objetivo-smart-personalizado" class="mb-6"></div>
+
+      <h3 class="text-lg font-semibold mt-6 mb-2">Ejemplo de Objetivo SMART</h3>
+      <p><strong>Específico:</strong> Ahorrar todas las monedas de $500 y $1000 que reciba. <br>
+        <strong>Medible:</strong> Se medirá la cantidad de monedas recolectadas semanalmente. <br>
+        <strong>Alcanzable:</strong> Es posible hacerlo destinando solo monedas pequeñas que se reciben en el día a día. <br>
+        <strong>Relevante:</strong> Este ahorro servirá como un autorregalo en diciembre, fomentando la disciplina y el hábito del ahorro.<br>
+        <strong>Tiempo:</strong> Desde ahora hasta diciembre del presente año.</p>
     </section>
 
     <section id="microacciones" class="bg-white mb-8 p-6 rounded-lg shadow-md">
@@ -86,8 +110,10 @@
         🧾 Última semana de diciembre: Abrir la alcancía y contar el dinero ahorrado para comprar el autorregalo.</p>
     </section>
 
-    <section id="carruselEmocional" class="bg-white mb-8 p-6 rounded-lg shadow-md">
-      <h2 class="text-green-600 border-b-2 border-green-600 pb-2 mb-4">Estrategias emocionales</h2>
+    <section id="estrategias" class="bg-white mb-8 p-6 rounded-lg shadow-md">
+      <h2 class="text-green-600 border-b-2 border-green-600 pb-2 mb-4">Estrategias para Manejar el Dinero</h2>
+
+      <h3 class="text-lg font-semibold mt-6 mb-3">Estrategias Emocionales</h3>
       <p class="mb-4">Aquí tienes algunas frases motivadoras para mantenerte enfocado en tus metas financieras:</p>
       <ul class="list-disc list-inside space-y-2">
         <li>"Cada peso ahorrado hoy es un paso hacia tu libertad financiera."</li>
@@ -97,10 +123,10 @@
         <li>"Cada semana que ahorras es una victoria sobre tus impulsos."</li>
       </ul>
 
-      <h3 class="text-lg font-semibold mt-6 mb-3">Técnicas para manejar emociones financieras:</h3>
+      <h4 class="text-md font-semibold mt-4 mb-2">Técnicas para manejar emociones financieras:</h4>
       <div class="grid md:grid-cols-2 gap-4">
         <div class="bg-green-50 p-4 rounded-lg">
-          <h4 class="font-bold text-green-700 mb-2">Cuando sientas ansiedad financiera:</h4>
+          <h5 class="font-bold text-green-700 mb-2">Cuando sientas ansiedad financiera:</h5>
           <ul class="text-sm space-y-1">
             <li>• Respira profundamente 3 veces</li>
             <li>• Lista 3 cosas positivas que tienes</li>
@@ -109,7 +135,7 @@
           </ul>
         </div>
         <div class="bg-blue-50 p-4 rounded-lg">
-          <h4 class="font-bold text-blue-700 mb-2">Cuando tengas ganas de gastar impulsivamente:</h4>
+          <h5 class="font-bold text-blue-700 mb-2">Cuando tengas ganas de gastar impulsivamente:</h5>
           <ul class="text-sm space-y-1">
             <li>• Espera 24 horas antes de comprar</li>
             <li>• Pregúntate: "¿Lo necesito realmente?"</li>
@@ -118,7 +144,7 @@
           </ul>
         </div>
         <div class="bg-purple-50 p-4 rounded-lg">
-          <h4 class="font-bold text-purple-700 mb-2">Para mantener la motivación:</h4>
+          <h5 class="font-bold text-purple-700 mb-2">Para mantener la motivación:</h5>
           <ul class="text-sm space-y-1">
             <li>• Celebra pequeños logros</li>
             <li>• Visualiza tus metas alcanzadas</li>
@@ -127,12 +153,52 @@
           </ul>
         </div>
         <div class="bg-yellow-50 p-4 rounded-lg">
-          <h4 class="font-bold text-yellow-700 mb-2">Cuando te sientas desmotivado:</h4>
+          <h5 class="font-bold text-yellow-700 mb-2">Cuando te sientas desmotivado:</h5>
           <ul class="text-sm space-y-1">
             <li>• Recuerda por qué empezaste</li>
             <li>• Ve tu progreso en la barra de avance</li>
             <li>• Imagina cómo te sentirás al lograrlo</li>
             <li>• Empieza con algo pequeño hoy</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 class="text-lg font-semibold mt-8 mb-3">Estrategias Financieras Prácticas</h3>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-blue-50 p-4 rounded-lg">
+          <h4 class="font-bold text-blue-700 mb-2">Presupuesto y Control de Gastos</h4>
+          <ul class="text-sm space-y-1">
+            <li>• Regla 50/30/20: 50% necesidades, 30% deseos, 20% ahorro/deuda.</li>
+            <li>• Registra todos los gastos durante un mes para identificar patrones.</li>
+            <li>• Usa apps de presupuesto como Mint o YNAB para seguimiento automático.</li>
+            <li>• Revisa tu presupuesto semanalmente y ajústalo según sea necesario.</li>
+          </ul>
+        </div>
+        <div class="bg-green-50 p-4 rounded-lg">
+          <h4 class="font-bold text-green-700 mb-2">Estrategias de Ahorro</h4>
+          <ul class="text-sm space-y-1">
+            <li>• Ahorro automático: Configura transferencias automáticas a una cuenta de ahorro.</li>
+            <li>• Redondeo: Redondea tus compras y ahorra la diferencia.</li>
+            <li>• Fondo de emergencia: Apunta a 3-6 meses de gastos básicos.</li>
+            <li>• Ahorro por categorías: Separa ahorros para viajes, emergencias, etc.</li>
+          </ul>
+        </div>
+        <div class="bg-red-50 p-4 rounded-lg">
+          <h4 class="font-bold text-red-700 mb-2">Manejo de Deudas</h4>
+          <ul class="text-sm space-y-1">
+            <li>• Método avalancha: Paga primero las deudas con mayor interés.</li>
+            <li>• Método bola de nieve: Paga primero las deudas más pequeñas para motivación.</li>
+            <li>• Negocia con acreedores para mejores tasas o plazos.</li>
+            <li>• Evita nuevas deudas mientras pagas las existentes.</li>
+          </ul>
+        </div>
+        <div class="bg-purple-50 p-4 rounded-lg">
+          <h4 class="font-bold text-purple-700 mb-2">Inversión Básica</h4>
+          <ul class="text-sm space-y-1">
+            <li>• Invierte en ti mismo: Educación y habilidades primero.</li>
+            <li>• Diversifica: No pongas todos los huevos en una canasta.</li>
+            <li>• Inversión a largo plazo: Usa fondos indexados para crecimiento.</li>
+            <li>• Empieza pequeño: Invierte lo que puedas ahorrar consistentemente.</li>
           </ul>
         </div>
       </div>
