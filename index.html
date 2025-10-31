@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Plan de Mejora Financiera</title>
+</head>
+<body>
+  <header>
+    <h1>Prototipo: Plan de Mejora Financiera</h1>
+  </header>
+
+  <main>
+
+    <section id="smart_section">
+      <h2> Objetivo SMART </h2>
+      <p>Específico: Ahorrar todas las monedas de $500 y $1000 que reciba. <br>
+        Medible: Se medirá la cantidad de monedas recolectadas semanalmente. <br>
+        Alcanzable: Es posible hacerlo destinando solo monedas pequeñas que se reciban en el día a día. <br>
+        Relevante: Este ahorro servirá como un autorregalo en diciembre, fomentando la disciplina y el hábito del ahorro.<br>
+        Tiempo: Desde ahora hasta diciembre del presente año.</p>
+    </section>
+
+    <section id="microacciones">
+      <h2>3. Microacciones semanales</h2>
+      <p>💰 Semana 1: Elegir o fabricar una alcancía sellada.
+
+        🔄 Semana 2: Separar diariamente las monedas de $500 y $1000 y guardarlas en un lugar visible para recordarlo.
+        
+        🗓️ Semana 3: Al finalizar la semana, depositar todas las monedas recolectadas en la alcancía.
+        
+        📆 Semanas siguientes: Repetir el mismo proceso cada semana.
+        
+        🧾 Última semana de diciembre: Abrir la alcancía y contar el dinero ahorrado para comprar el autorregalo.</p>
+    </section>
+
+    <section id="carruselEmocional">
+      <h2>Estrategias emocionales</h2>
+      <div id="grid">
+          <div id="card">
+              <img src="assets/images/relojD1.jpg" alt="reloj">
+              <h3>Jaguar</h3>
+              <p>$100</p>
+              <div class="botones">
+                  <a href="catalogo.html" class="btn">Ver Catalogo</a>
+                  <a href="detalleProducto.html" class="btn">Ver detalles</a>
+              </div>
+              <div class="rating">★★★★★</div>
+          </div>
+
+          <div class="card">
+              <img src="assets/images/relojD2.jpg" alt="reloj">
+              <h3>Lotus</h3>
+              <p>$200</p>
+              <div class="botones">
+                  <a href="catalogo.html" class="btn">Ver Catalogo</a>
+                  <a href="detalleProducto2.html" class="btn">Ver detalles</a>
+              </div>
+              <div class="rating">★★★★☆</div>
+          </div>
+
+          <div class="card">
+              <img src="assets/images/relojD3.jpg" alt="reloj">
+              <h3>Marea</h3>
+              <p>$300</p>
+              <div class="botones">
+                  <a href="catalogo.html" class="btn">Ver Catalogo</a>
+                  <a href="detalleProducto3.html" class="btn">Ver detalles</a>
+              </div>
+              <div class="rating">★★★☆☆</div>
+          </div>
+
+          <div class="card">
+              <img src="assets/images/relojD4.jpg" alt="reloj">
+              <h3>Calypso</h3>
+              <p>$400</p>
+              <div class="botones">
+                  <a href="catalogo.html" class="btn">Ver Catalogo</a>
+                  <a href="detalleProducto4.html" class="btn">Ver Detalles</a>
+              </div>
+              <div class="rating">★★★★★</div>
+          </div>
+
+          <div class="card">
+              <img src="assets/images/relojD5.jpg" alt="reloj">
+              <h3>Festina</h3>
+              <p>$500</p>
+              <div class="botones">
+                  <a href="catalogo.html" class="btn">Ver Catalogo</a>
+                  <a href="detalleProducto5.html" class="btn">Ver Detalles</a>
+              </div>
+              <div class="rating">★★★★☆</div>
+          </div>
+
+          <div class="card">
+              <img src="assets/images/relojD6.jpg" alt="reloj">
+              <h3>Candino</h3>
+              <p>$600</p>
+              <div class="botones">
+                  <a href="catalogo.html" class="btn">Ver Catalogo</a>
+                  <a href="detalleProducto6.html" class="btn">Ver Detalles</a>
+              </div>
+              <div class="rating">★★★☆☆</div>
+          </div>
+      </div>
+</section>
+
+    <section id="simulador">
+      <h2>Simulador de ahorro</h2>
+      <label for="monto_inicial">Monto inicial</label>
+      <input id="monto_inicial" type="number" />
+
+      <label for="aporte_semanal">Aporte semanal</label>
+      <input id="aporte_semanal" type="number" />
+
+      <label for="semanas">Semanas</label>
+      <input id="semanas" type="number" />
+
+      <div>
+        <button type="button" id="simular">Simular</button>
+        <button type="button" id="limpiar_simulacion">Limpiar</button>
+      </div>
+
+      <div id="resultado_simulacion"></div>
+    </section>
+
+    <section id="recordatorios">
+      <h2>Recordatorios</h2>
+      <input id="rem_text" placeholder="Recordatorio (ej: Revisar presupuesto)" />
+      <input id="rem_min" type="number" placeholder="min" />
+      <button type="button" id="crear_recordatorio">Crear</button>
+      <ul id="lista_recordatorios"></ul>
+    </section>
+
+    <section id="seguimiento">
+      <h2>Seguimiento</h2>
+      <input id="check_text" placeholder="Actividad semanal" />
+      <button type="button" id="agregar_check">Agregar</button>
+      <ul id="lista_checklist"></ul>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>Prototipo HTML sin estilos ni scripts — listo para agregar CSS/JS.</p>
+  </footer>
+</body>
+</html>
+
