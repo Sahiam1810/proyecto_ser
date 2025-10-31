@@ -1,2 +1,104 @@
 @import 'tailwindcss';
 
+/* Estilos personalizados para Mi Coach Financiero Virtual */
+
+body {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+}
+
+section {
+  margin-bottom: 2rem;
+}
+
+form {
+  margin-bottom: 1.5rem;
+}
+
+input, textarea, button {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para la barra de progreso */
+.progress-bar {
+  background-color: #e5e7eb;
+  border-radius: 0.5rem;
+  height: 1rem;
+  overflow: hidden;
+}
+
+.progress-fill {
+  background-color: #10b981;
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
+/* Estilos para entradas de bitácora */
+.bitacora-entrada {
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: #f9fafb;
+}
+
+.bitacora-entrada h4 {
+  margin-top: 0;
+  color: #059669;
+}
+
+/* Estilos para navegación */
+nav {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav-button {
+  font-weight: 500;
+  border: none;
+  outline: none;
+}
+
+/* Ocultar secciones por defecto */
+section {
+  display: block;
+}
+
+section.hidden {
+  display: none;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+
+  button {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+}
+

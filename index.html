@@ -1,19 +1,71 @@
 <!doctype html>
 <html lang="es">
-<head>
+  <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Plan de Mejora Financiera</title>
+  <title>Mi Coach Financiero Virtual</title>
+  <script type="module" src="/src/main.js"></script>
+  <link rel="stylesheet" href="./src/style.css">
 </head>
-<body>
-  <header>
-    <h1>Prototipo: Plan de Mejora Financiera</h1>
+<body class="bg-gray-100 font-sans leading-relaxed text-gray-800 m-0 p-0">
+  <header class="bg-green-500 text-white text-center py-4">
+    <h1 class="text-3xl font-bold">Mi Coach Financiero Virtual</h1>
   </header>
 
-  <main>
+  <nav class="bg-white shadow-md">
+    <div class="max-w-6xl mx-auto px-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-2 py-4">
+        <button class="nav-button bg-gray-200 text-gray-700 px-3 py-2 rounded text-sm hover:bg-green-100 hover:text-green-700 transition-colors" data-section="autoevaluacion">Autoevaluación</button>
+        <button class="nav-button bg-gray-200 text-gray-700 px-3 py-2 rounded text-sm hover:bg-green-100 hover:text-green-700 transition-colors" data-section="smart">Objetivo SMART</button>
+        <button class="nav-button bg-gray-200 text-gray-700 px-3 py-2 rounded text-sm hover:bg-green-100 hover:text-green-700 transition-colors" data-section="microacciones">Microacciones</button>
+        <button class="nav-button bg-gray-200 text-gray-700 px-3 py-2 rounded text-sm hover:bg-green-100 hover:text-green-700 transition-colors" data-section="estrategias">Estrategias</button>
+        <button class="nav-button bg-gray-200 text-gray-700 px-3 py-2 rounded text-sm hover:bg-green-100 hover:text-green-700 transition-colors" data-section="simulador">Simulador</button>
+        <button class="nav-button bg-gray-200 text-gray-700 px-3 py-2 rounded text-sm hover:bg-green-100 hover:text-green-700 transition-colors" data-section="recordatorios">Recordatorios</button>
+        <button class="nav-button bg-gray-200 text-gray-700 px-3 py-2 rounded text-sm hover:bg-green-100 hover:text-green-700 transition-colors" data-section="seguimiento">Seguimiento</button>
+        <button class="nav-button bg-gray-200 text-gray-700 px-3 py-2 rounded text-sm hover:bg-green-100 hover:text-green-700 transition-colors" data-section="bitacora">Bitácora</button>
+      </div>
+    </div>
+  </nav>
 
-    <section id="smart_section">
-      <h2> Objetivo SMART </h2>
+  <main class="max-w-6xl mx-auto p-8">
+
+    <section id="autoevaluacion" class="bg-white mb-8 p-6 rounded-lg shadow-md">
+      <h2 class="text-green-600 border-b-2 border-green-600 pb-2 mb-4">Autoevaluación Financiera</h2>
+      <form id="autoevaluacion-form" class="mb-4">
+        <h3 class="text-gray-800 mt-4 mb-2">Hábitos Financieros Actuales (1-4 puntos)</h3>
+        <label class="block mb-2 font-bold">¿Con qué frecuencia haces un presupuesto mensual? (1=Nunca, 4=Siempre)</label>
+        <input type="number" id="habito1" min="1" max="4" required class="w-full p-2 mb-4 border border-gray-300 rounded"><br>
+
+        <label class="block mb-2 font-bold">¿Cuánto control tienes sobre tus gastos impulsivos? (1=Ninguno, 4=Total)</label>
+        <input type="number" id="habito2" min="1" max="4" required class="w-full p-2 mb-4 border border-gray-300 rounded"><br>
+
+        <label class="block mb-2 font-bold">¿Qué tan consistente eres en ahorrar una parte de tus ingresos? (1=Nada, 4=Muy consistente)</label>
+        <input type="number" id="habito3" min="1" max="4" required class="w-full p-2 mb-4 border border-gray-300 rounded"><br>
+
+        <h3 class="text-gray-800 mt-4 mb-2">Comportamientos Impulsivos o Emocionales (1-4 puntos)</h3>
+        <label class="block mb-2 font-bold">¿Cuántas veces al mes compras algo que no necesitas por impulso? (1=Muchas, 4=Ninguna)</label>
+        <input type="number" id="impulsivo1" min="1" max="4" required class="w-full p-2 mb-4 border border-gray-300 rounded"><br>
+
+        <label class="block mb-2 font-bold">¿Cómo manejas el estrés financiero? (1=Comprando, 4=Planeando)</label>
+        <input type="number" id="impulsivo2" min="1" max="4" required class="w-full p-2 mb-4 border border-gray-300 rounded"><br>
+
+        <h3 class="text-gray-800 mt-4 mb-2">Metas Financieras (1-4 puntos)</h3>
+        <label class="block mb-2 font-bold">¿Qué tan claras son tus metas a corto plazo? (1=Confusas, 4=Muy claras)</label>
+        <input type="number" id="meta1" min="1" max="4" required class="w-full p-2 mb-4 border border-gray-300 rounded"><br>
+
+        <label class="block mb-2 font-bold">¿Qué tan realistas son tus metas a mediano plazo? (1=Irreales, 4=Muy realistas)</label>
+        <input type="number" id="meta2" min="1" max="4" required class="w-full p-2 mb-4 border border-gray-300 rounded"><br>
+
+        <label class="block mb-2 font-bold">¿Tienes un plan para tus metas a largo plazo? (1=No, 4=Sí, detallado)</label>
+        <input type="number" id="meta3" min="1" max="4" required class="w-full p-2 mb-4 border border-gray-300 rounded"><br>
+
+        <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Calcular Autoevaluación</button>
+      </form>
+      <div id="resultados-autoevaluacion"></div>
+    </section>
+
+    <section id="smart_section" class="bg-white mb-8 p-6 rounded-lg shadow-md">
+      <h2 class="text-green-600 border-b-2 border-green-600 pb-2 mb-4">Objetivo SMART</h2>
       <p>Específico: Ahorrar todas las monedas de $500 y $1000 que reciba. <br>
         Medible: Se medirá la cantidad de monedas recolectadas semanalmente. <br>
         Alcanzable: Es posible hacerlo destinando solo monedas pequeñas que se reciban en el día a día. <br>
@@ -21,128 +73,96 @@
         Tiempo: Desde ahora hasta diciembre del presente año.</p>
     </section>
 
-    <section id="microacciones">
-      <h2>3. Microacciones semanales</h2>
+    <section id="microacciones" class="bg-white mb-8 p-6 rounded-lg shadow-md">
+      <h2 class="text-green-600 border-b-2 border-green-600 pb-2 mb-4">3. Microacciones semanales</h2>
       <p>💰 Semana 1: Elegir o fabricar una alcancía sellada.
 
         🔄 Semana 2: Separar diariamente las monedas de $500 y $1000 y guardarlas en un lugar visible para recordarlo.
-        
+
         🗓️ Semana 3: Al finalizar la semana, depositar todas las monedas recolectadas en la alcancía.
-        
+
         📆 Semanas siguientes: Repetir el mismo proceso cada semana.
-        
+
         🧾 Última semana de diciembre: Abrir la alcancía y contar el dinero ahorrado para comprar el autorregalo.</p>
     </section>
 
-    <section id="carruselEmocional">
-      <h2>Estrategias emocionales</h2>
-      <div id="grid">
-          <div id="card">
-              <img src="assets/images/relojD1.jpg" alt="reloj">
-              <h3>Jaguar</h3>
-              <p>$100</p>
-              <div class="botones">
-                  <a href="catalogo.html" class="btn">Ver Catalogo</a>
-                  <a href="detalleProducto.html" class="btn">Ver detalles</a>
-              </div>
-              <div class="rating">★★★★★</div>
-          </div>
-
-          <div class="card">
-              <img src="assets/images/relojD2.jpg" alt="reloj">
-              <h3>Lotus</h3>
-              <p>$200</p>
-              <div class="botones">
-                  <a href="catalogo.html" class="btn">Ver Catalogo</a>
-                  <a href="detalleProducto2.html" class="btn">Ver detalles</a>
-              </div>
-              <div class="rating">★★★★☆</div>
-          </div>
-
-          <div class="card">
-              <img src="assets/images/relojD3.jpg" alt="reloj">
-              <h3>Marea</h3>
-              <p>$300</p>
-              <div class="botones">
-                  <a href="catalogo.html" class="btn">Ver Catalogo</a>
-                  <a href="detalleProducto3.html" class="btn">Ver detalles</a>
-              </div>
-              <div class="rating">★★★☆☆</div>
-          </div>
-
-          <div class="card">
-              <img src="assets/images/relojD4.jpg" alt="reloj">
-              <h3>Calypso</h3>
-              <p>$400</p>
-              <div class="botones">
-                  <a href="catalogo.html" class="btn">Ver Catalogo</a>
-                  <a href="detalleProducto4.html" class="btn">Ver Detalles</a>
-              </div>
-              <div class="rating">★★★★★</div>
-          </div>
-
-          <div class="card">
-              <img src="assets/images/relojD5.jpg" alt="reloj">
-              <h3>Festina</h3>
-              <p>$500</p>
-              <div class="botones">
-                  <a href="catalogo.html" class="btn">Ver Catalogo</a>
-                  <a href="detalleProducto5.html" class="btn">Ver Detalles</a>
-              </div>
-              <div class="rating">★★★★☆</div>
-          </div>
-
-          <div class="card">
-              <img src="assets/images/relojD6.jpg" alt="reloj">
-              <h3>Candino</h3>
-              <p>$600</p>
-              <div class="botones">
-                  <a href="catalogo.html" class="btn">Ver Catalogo</a>
-                  <a href="detalleProducto6.html" class="btn">Ver Detalles</a>
-              </div>
-              <div class="rating">★★★☆☆</div>
-          </div>
-      </div>
-</section>
-
-    <section id="simulador">
-      <h2>Simulador de ahorro</h2>
-      <label for="monto_inicial">Monto inicial</label>
-      <input id="monto_inicial" type="number" />
-
-      <label for="aporte_semanal">Aporte semanal</label>
-      <input id="aporte_semanal" type="number" />
-
-      <label for="semanas">Semanas</label>
-      <input id="semanas" type="number" />
-
-      <div>
-        <button type="button" id="simular">Simular</button>
-        <button type="button" id="limpiar_simulacion">Limpiar</button>
-      </div>
-
-      <div id="resultado_simulacion"></div>
+    <section id="carruselEmocional" class="bg-white mb-8 p-6 rounded-lg shadow-md">
+      <h2 class="text-green-600 border-b-2 border-green-600 pb-2 mb-4">Estrategias emocionales</h2>
+      <p class="mb-4">Aquí tienes algunas frases motivadoras para mantenerte enfocado en tus metas financieras:</p>
+      <ul class="list-disc list-inside space-y-2">
+        <li>"Cada peso ahorrado hoy es un paso hacia tu libertad financiera."</li>
+        <li>"La paciencia es la clave del ahorro. Pequeños esfuerzos, grandes recompensas."</li>
+        <li>"No compres lo que quieres, ahorra para lo que necesitas."</li>
+        <li>"El dinero no compra felicidad, pero la disciplina financiera sí construye tranquilidad."</li>
+        <li>"Cada semana que ahorras es una victoria sobre tus impulsos."</li>
+      </ul>
     </section>
 
-    <section id="recordatorios">
-      <h2>Recordatorios</h2>
-      <input id="rem_text" placeholder="Recordatorio (ej: Revisar presupuesto)" />
-      <input id="rem_min" type="number" placeholder="min" />
-      <button type="button" id="crear_recordatorio">Crear</button>
-      <ul id="lista_recordatorios"></ul>
+    <section id="simulador" class="bg-white mb-8 p-6 rounded-lg shadow-md">
+      <h2 class="text-green-600 border-b-2 border-green-600 pb-2 mb-4">Simulador de ahorro</h2>
+      <label for="monto_inicial" class="block mb-2 font-bold">Monto inicial</label>
+      <input id="monto_inicial" type="number" class="w-full p-2 mb-4 border border-gray-300 rounded">
+
+      <label for="aporte_semanal" class="block mb-2 font-bold">Aporte semanal</label>
+      <input id="aporte_semanal" type="number" class="w-full p-2 mb-4 border border-gray-300 rounded">
+
+      <label for="semanas" class="block mb-2 font-bold">Semanas</label>
+      <input id="semanas" type="number" class="w-full p-2 mb-4 border border-gray-300 rounded">
+
+      <div class="flex space-x-4">
+        <button type="button" id="simular" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Simular</button>
+        <button type="button" id="limpiar_simulacion" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">Limpiar</button>
+      </div>
+
+      <div id="resultado_simulacion" class="mt-4"></div>
     </section>
 
-    <section id="seguimiento">
-      <h2>Seguimiento</h2>
-      <input id="check_text" placeholder="Actividad semanal" />
-      <button type="button" id="agregar_check">Agregar</button>
-      <ul id="lista_checklist"></ul>
+    <section id="recordatorios" class="bg-white mb-8 p-6 rounded-lg shadow-md">
+      <h2 class="text-green-600 border-b-2 border-green-600 pb-2 mb-4">Recordatorios</h2>
+      <input id="rem_text" placeholder="Recordatorio (ej: Revisar presupuesto)" class="w-full p-2 mb-4 border border-gray-300 rounded">
+      <input id="rem_min" type="number" placeholder="min" class="w-full p-2 mb-4 border border-gray-300 rounded">
+      <button type="button" id="crear_recordatorio" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Crear</button>
+      <ul id="lista_recordatorios" class="list-none p-0 mt-4"></ul>
+    </section>
+
+    <section id="seguimiento" class="bg-white mb-8 p-6 rounded-lg shadow-md">
+      <h2 class="text-green-600 border-b-2 border-green-600 pb-2 mb-4">Seguimiento</h2>
+      <input id="check_text" placeholder="Actividad semanal" class="w-full p-2 mb-4 border border-gray-300 rounded">
+      <button type="button" id="agregar_check" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Agregar</button>
+      <ul id="lista_checklist" class="list-none p-0 mt-4"></ul>
+
+      <!-- Barra de Progreso -->
+      <div class="mt-6">
+        <h3 class="text-lg font-semibold mb-2">Progreso de Actividades</h3>
+        <div class="progress-bar bg-gray-200 rounded-full h-4 mb-2">
+          <div id="barra-progreso" class="progress-fill bg-green-500 h-full rounded-full transition-all duration-300" style="width: 0%"></div>
+        </div>
+        <p id="texto-progreso" class="text-sm text-gray-600">Agrega actividades para ver tu progreso</p>
+      </div>
+    </section>
+
+    <section id="bitacora" class="bg-white mb-8 p-6 rounded-lg shadow-md">
+      <h2 class="text-green-600 border-b-2 border-green-600 pb-2 mb-4">Bitácora Emocional Financiera</h2>
+      <form id="bitacora-form" class="mb-4">
+        <label for="bitacora-fecha" class="block mb-2 font-bold">Fecha:</label>
+        <input type="date" id="bitacora-fecha" required class="w-full p-2 mb-4 border border-gray-300 rounded"><br>
+
+        <label for="bitacora-emocion" class="block mb-2 font-bold">Emoción principal hoy:</label>
+        <input type="text" id="bitacora-emocion" placeholder="ej: Ansiedad, Motivación" required class="w-full p-2 mb-4 border border-gray-300 rounded"><br>
+
+        <label for="bitacora-reflexion" class="block mb-2 font-bold">Reflexión financiera:</label>
+        <textarea id="bitacora-reflexion" placeholder="Describe cómo te sientes sobre tu situación financiera hoy..." required class="w-full p-2 mb-4 border border-gray-300 rounded"></textarea><br>
+
+        <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Guardar Entrada</button>
+      </form>
+      <div id="lista-bitacora"></div>
     </section>
 
   </main>
 
-  <footer>
-    <p>Prototipo HTML sin estilos ni scripts — listo para agregar CSS/JS.</p>
+
+  <footer class="text-center py-4 bg-gray-800 text-white">
+    <p>Prototipo con Tailwind CSS y JavaScript interactivo.</p>
   </footer>
 </body>
 </html>
