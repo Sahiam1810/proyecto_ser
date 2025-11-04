@@ -81,13 +81,22 @@
         <label for="smart-relevante" class="block mb-2 font-bold">Relevante (¿Por qué es importante para ti?)</label>
         <input type="text" id="smart-relevante" placeholder="Ej: Me permitirá viajar y desconectar del estrés diario" required class="w-full p-2 mb-4 border border-gray-300 rounded">
 
+        <label for="smart-plazo" class="block mb-2 font-bold">Plazo</label>
+        <select id="smart-plazo" required class="w-full p-2 mb-4 border border-gray-300 rounded">
+          <option value="">Selecciona un plazo</option>
+          <option value="corto">Corto plazo (menos de 1 año)</option>
+          <option value="medio">Medio plazo (1-3 años)</option>
+          <option value="largo">Largo plazo (más de 3 años)</option>
+        </select>
+
         <label for="smart-tiempo" class="block mb-2 font-bold">Tiempo (¿Cuándo lo lograrás?)</label>
         <input type="text" id="smart-tiempo" placeholder="Ej: En 5 meses, para junio del próximo año" required class="w-full p-2 mb-4 border border-gray-300 rounded">
 
         <button type="submit" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">Crear Objetivo SMART</button>
       </form>
 
-      <div id="objetivo-smart-personalizado" class="mb-6"></div>
+      <h3 class="text-lg font-semibold mt-6 mb-2">Tus Objetivos SMART</h3>
+      <div id="lista-objetivos-smart" class="mb-6 space-y-4"></div>
 
       <h3 class="text-lg font-semibold mt-6 mb-2">Ejemplo de Objetivo SMART</h3>
       <p><strong>Específico:</strong> Ahorrar todas las monedas de $500 y $1000 que reciba. <br>
