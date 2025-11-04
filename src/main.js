@@ -302,9 +302,9 @@ function mostrarBitacora() {
 // Cargar bitácora al inicio
 document.addEventListener('DOMContentLoaded', mostrarBitacora);
 
-// Funcionalidad para Objetivo SMART
+// Funcionalidad para Objetivos SMART
 const smartForm = document.getElementById('smart-form');
-const objetivoSmartPersonalizado = document.getElementById('objetivo-smart-personalizado');
+const listaObjetivosSmart = document.getElementById('lista-objetivos-smart');
 
 if (smartForm) {
   smartForm.addEventListener('submit', (e) => {
@@ -313,45 +313,198 @@ if (smartForm) {
     const medible = document.getElementById('smart-medible').value.trim();
     const alcanzable = document.getElementById('smart-alcanzable').value.trim();
     const relevante = document.getElementById('smart-relevante').value.trim();
+    const plazo = document.getElementById('smart-plazo').value;
     const tiempo = document.getElementById('smart-tiempo').value.trim();
 
-    if (especifico && medible && alcanzable && relevante && tiempo) {
+    if (especifico && medible && alcanzable && relevante && plazo && tiempo) {
       const objetivo = {
+        id: Date.now(),
         especifico,
         medible,
         alcanzable,
         relevante,
+        plazo,
         tiempo,
         fechaCreacion: new Date().toISOString()
       };
 
-      localStorage.setItem('objetivo-smart', JSON.stringify(objetivo));
-      mostrarObjetivoSMART(objetivo);
+      const objetivos = JSON.parse(localStorage.getItem('objetivos-smart') || '[]');
+      objetivos.push(objetivo);
+      localStorage.setItem('objetivos-smart', JSON.stringify(objetivos));
+
+      mostrarObjetivosSMART();
       smartForm.reset();
     }
   });
 }
 
-function mostrarObjetivoSMART(objetivo) {
-  if (objetivoSmartPersonalizado) {
-    objetivoSmartPersonalizado.innerHTML = `
-      <h4 class="text-lg font-semibold mb-2">Tu Objetivo SMART Personalizado</h4>
-      <div class="bg-green-50 p-4 rounded-lg">
+function mostrarObjetivosSMART() {
+  const objetivos = JSON.parse(localStorage.getItem('objetivos-smart') || '[]');
+  if (listaObjetivosSmart) {
+    listaObjetivosSmart.innerHTML = '';
+
+    if (objetivos.length === 0) {
+      listaObjetivosSmart.innerHTML = '<p class="text-gray-500">No tienes objetivos SMART creados aún.</p>';
+      return;
+    }
+
+    objetivos.forEach(objetivo => {
+      const colores = getColoresPorPlazo(objetivo.plazo);
+      const div = document.createElement('div');
+      div.className = `${colores.bg} p-4 rounded-lg border-l-4 ${colores.border}`;
+      div.innerHTML = `
+        <div class="flex justify-between items-start mb-2">
+          <h4 class="text-lg font-semibold">${getPlazoTexto(objetivo.plazo)}</h4>
+          <div class="flex space-x-2">
+            <button class="editar-obj bg-blue-500 text-white px-3 py-1 rounded text-sm hover:bg-blue-600" data-id="${objetivo.id}">Editar</button>
+            <button class="eliminar-obj bg-red-500 text-white px-3 py-1 rounded text-sm hover:bg-red-600" data-id="${objetivo.id}">Eliminar</button>
+          </div>
+        </div>
         <p><strong>Específico:</strong> ${objetivo.especifico}</p>
         <p><strong>Medible:</strong> ${objetivo.medible}</p>
         <p><strong>Alcanzable:</strong> ${objetivo.alcanzable}</p>
         <p><strong>Relevante:</strong> ${objetivo.relevante}</p>
         <p><strong>Tiempo:</strong> ${objetivo.tiempo}</p>
         <p class="text-sm text-gray-600 mt-2">Creado el: ${new Date(objetivo.fechaCreacion).toLocaleDateString()}</p>
-      </div>
-    `;
+      `;
+      listaObjetivosSmart.appendChild(div);
+    });
+
+    // Agregar event listeners a botones
+    document.querySelectorAll('.editar-obj').forEach(btn => {
+      btn.addEventListener('click', (e) => editarObjetivo(parseInt(e.target.dataset.id)));
+    });
+
+    document.querySelectorAll('.eliminar-obj').forEach(btn => {
+      btn.addEventListener('click', (e) => eliminarObjetivo(parseInt(e.target.dataset.id)));
+    });
   }
 }
 
-// Cargar objetivo SMART al inicio
-document.addEventListener('DOMContentLoaded', () => {
-  const objetivoGuardado = localStorage.getItem('objetivo-smart');
-  if (objetivoGuardado) {
-    mostrarObjetivoSMART(JSON.parse(objetivoGuardado));
+function getPlazoTexto(plazo) {
+  const textos = {
+    'corto': 'Corto Plazo',
+    'medio': 'Medio Plazo',
+    'largo': 'Largo Plazo'
+  };
+  return textos[plazo] || plazo;
+}
+
+function getColoresPorPlazo(plazo) {
+  const colores = {
+    'corto': { bg: 'bg-green-50', border: 'border-green-500' },
+    'medio': { bg: 'bg-yellow-50', border: 'border-yellow-500' },
+    'largo': { bg: 'bg-blue-50', border: 'border-blue-500' }
+  };
+  return colores[plazo] || { bg: 'bg-gray-50', border: 'border-gray-500' };
+}
+
+function editarObjetivo(id) {
+  const objetivos = JSON.parse(localStorage.getItem('objetivos-smart') || '[]');
+  const objetivo = objetivos.find(obj => obj.id === id);
+
+  if (objetivo) {
+    document.getElementById('smart-especifico').value = objetivo.especifico;
+    document.getElementById('smart-medible').value = objetivo.medible;
+    document.getElementById('smart-alcanzable').value = objetivo.alcanzable;
+    document.getElementById('smart-relevante').value = objetivo.relevante;
+    document.getElementById('smart-plazo').value = objetivo.plazo;
+    document.getElementById('smart-tiempo').value = objetivo.tiempo;
+
+    // Cambiar botón a "Actualizar"
+    const submitBtn = document.querySelector('#smart-form button[type="submit"]');
+    submitBtn.textContent = 'Actualizar Objetivo SMART';
+    submitBtn.dataset.editId = id;
+
+    // Cambiar handler del form
+    smartForm.removeEventListener('submit', crearObjetivoHandler);
+    smartForm.addEventListener('submit', actualizarObjetivoHandler);
   }
-});
+}
+
+function eliminarObjetivo(id) {
+  if (confirm('¿Estás seguro de que quieres eliminar este objetivo?')) {
+    const objetivos = JSON.parse(localStorage.getItem('objetivos-smart') || '[]');
+    const nuevosObjetivos = objetivos.filter(obj => obj.id !== id);
+    localStorage.setItem('objetivos-smart', JSON.stringify(nuevosObjetivos));
+    mostrarObjetivosSMART();
+  }
+}
+
+function crearObjetivoHandler(e) {
+  e.preventDefault();
+  const especifico = document.getElementById('smart-especifico').value.trim();
+  const medible = document.getElementById('smart-medible').value.trim();
+  const alcanzable = document.getElementById('smart-alcanzable').value.trim();
+  const relevante = document.getElementById('smart-relevante').value.trim();
+  const plazo = document.getElementById('smart-plazo').value;
+  const tiempo = document.getElementById('smart-tiempo').value.trim();
+
+  if (especifico && medible && alcanzable && relevante && plazo && tiempo) {
+    const objetivo = {
+      id: Date.now(),
+      especifico,
+      medible,
+      alcanzable,
+      relevante,
+      plazo,
+      tiempo,
+      fechaCreacion: new Date().toISOString()
+    };
+
+    const objetivos = JSON.parse(localStorage.getItem('objetivos-smart') || '[]');
+    objetivos.push(objetivo);
+    localStorage.setItem('objetivos-smart', JSON.stringify(objetivos));
+
+    mostrarObjetivosSMART();
+    smartForm.reset();
+  }
+}
+
+function actualizarObjetivoHandler(e) {
+  e.preventDefault();
+  const id = parseInt(e.target.querySelector('button[type="submit"]').dataset.editId);
+  const especifico = document.getElementById('smart-especifico').value.trim();
+  const medible = document.getElementById('smart-medible').value.trim();
+  const alcanzable = document.getElementById('smart-alcanzable').value.trim();
+  const relevante = document.getElementById('smart-relevante').value.trim();
+  const plazo = document.getElementById('smart-plazo').value;
+  const tiempo = document.getElementById('smart-tiempo').value.trim();
+
+  if (especifico && medible && alcanzable && relevante && plazo && tiempo) {
+    const objetivos = JSON.parse(localStorage.getItem('objetivos-smart') || '[]');
+    const index = objetivos.findIndex(obj => obj.id === id);
+
+    if (index !== -1) {
+      objetivos[index] = {
+        ...objetivos[index],
+        especifico,
+        medible,
+        alcanzable,
+        relevante,
+        plazo,
+        tiempo
+      };
+      localStorage.setItem('objetivos-smart', JSON.stringify(objetivos));
+      mostrarObjetivosSMART();
+    }
+
+    // Resetear form
+    smartForm.reset();
+    const submitBtn = document.querySelector('#smart-form button[type="submit"]');
+    submitBtn.textContent = 'Crear Objetivo SMART';
+    delete submitBtn.dataset.editId;
+
+    // Cambiar handler del form
+    smartForm.removeEventListener('submit', actualizarObjetivoHandler);
+    smartForm.addEventListener('submit', crearObjetivoHandler);
+  }
+}
+
+// Cargar objetivos SMART al inicio
+document.addEventListener('DOMContentLoaded', mostrarObjetivosSMART);
+
+// Agregar handler inicial
+if (smartForm) {
+  smartForm.addEventListener('submit', crearObjetivoHandler);
+}
